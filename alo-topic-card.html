@@ -1,0 +1,119 @@
+<link rel="import" href="paper-card/paper-card.html">
+<link rel="import" href="paper-button/paper-button.html">
+<link rel="import" href="iron-icons/device-icons.html">
+<link rel="import" href="iron-icons/communication-icons.html">
+
+<dom-module id="alo-topic-card">
+  <template>
+
+    <style is="custom-style">
+      paper-card {
+          margin: 15px 0;
+      }
+      paper-card.topic { @apply(--layout-horizontal); }
+      .topic-image {
+        width: 100px;
+        height: 100px;
+        background-size: cover;
+        float: left;
+        margin-right: 12px;
+      }
+      .topic-content {
+        @apply(--layout-flex);
+        float: left;
+      }
+      .topic-header {
+          padding: 12px 12px 0;
+          position: relative;
+      }
+      .topic-header .topic-title{@apply(--paper-font-headline);}
+      .topic-name { color: var(--paper-grey-600); margin: 8px 0; }
+      .topic-icon {
+          font-size: 11px;
+      }
+      .card-content {
+          line-height: 22px;
+      }
+      .card-actions {
+          text-align: right;
+      }
+      iron-icon {
+        --iron-icon-fill-color: #4285f4;
+        --iron-icon-height: 20px;
+        --iron-icon-width: 20px;
+      }
+      iron-icon:last-child {
+          padding-left: 8px;
+      }
+      paper-button.colorful {
+        color:#4285f4;
+      }
+
+      paper-button[raised].colorful {
+        background:#4285f4;color:#fff
+      }
+
+    </style>
+
+    <paper-card class="topic">
+      <div class="topic-content">
+        <div class="topic-image" style="background:url('{{imageUrl}}')"></div>
+        <div class="topic-header">
+          <div class="topic-title">{{title}}</div>
+          <div class="topic-name">By {{author}}</div>
+          <div class="topic-icon">
+              <iron-icon icon="device:access-time"></iron-icon> {{date}}
+              <iron-icon icon="communication:chat-bubble"></iron-icon> 0
+          </div>
+        </div>
+        <div class="card-content">{{ excerpt }} ...</div>
+        <div class="card-actions">
+            <paper-button tabindex="0" raised class="colorful">{{ readMoreTitle }}</paper-button>
+        </div>
+      </div>
+    </paper-card>
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'alo-topic-card',
+        properties: {
+            title: {
+                type: String,
+                value: 'Tidak terlambat Haid tetapi keluar bercak merah'
+            },
+            author: {
+                type: String,
+                value: 'Santie Oka'
+            },
+            date: {
+                type: String,
+                value: '16 minute'
+            },
+            imageUrl: {
+                type: String,
+                value: 'http://lorempixel.com/100/100'
+            },
+
+            excerpt: {
+                type: String,
+                value: 'siang dok, saya mau bertanya bagaimana cara menambah berat badan secara alami atau suplemen yang baik untuk menambah berat badan. terima kasih'
+            },
+
+            readMoreUrl: {
+                type: String,
+                value: 'jawab'
+            },
+
+            readMoreTitle: {
+                type: String,
+                value: 'jawab'
+            }
+        }
+    })
+    })();
+  </script>
+
+</dom-module>
